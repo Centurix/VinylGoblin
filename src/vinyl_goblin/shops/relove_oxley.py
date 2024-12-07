@@ -39,7 +39,7 @@ class ReloveOxley(Shop):
             for release in releases:
                 release_title_container = release.find(name="h3", class_="card__heading")
                 release_title = release_title_container.find(name="a").text
-                release_title = release_title.replace("\n", " ")
+                release_title = release_title.replace("\n", " ").strip()
                 regular_price = release.find(name="span", class_="price-item--regular")
                 regular_price = re.sub('[^0-9,.]', '', regular_price.text)
                 regular_price = Decimal(regular_price)
