@@ -3,8 +3,12 @@ run-name: Building executable 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+    runs-on: python:3.13-alpine
     steps:
+      - run: curl -sSL https://pdm-project.org/install-pdm.py | python3 -
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - run: pdm install
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
         with:
