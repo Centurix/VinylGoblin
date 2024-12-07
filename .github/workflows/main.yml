@@ -1,0 +1,12 @@
+jobs:
+  pyinstaller-build:
+    runs-on: alpine:latest
+    steps:
+      - name: Create Executable
+        uses: sayyid5416/pyinstaller@v1
+        with:
+          python_ver: '3.13'
+          spec: 'src/build.spec'
+          requirements: 'src/requirements.txt'
+          upload_exe_with_name: 'vinylgoblin'
+          options: --onefile, --name "Vinyl Goblin", --windowed, 
