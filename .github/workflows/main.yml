@@ -1,6 +1,9 @@
+name: Create executable
+run-name: Building executable 🚀
+on: [push]
 jobs:
-  pyinstaller-build:
-    runs-on: alpine:latest
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
     steps:
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
