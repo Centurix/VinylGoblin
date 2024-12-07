@@ -29,6 +29,8 @@ JB Hi Fi is not here because it's honestly too hard for very little reward on ov
 echo & bounce are not here because there is no non-graphql direct search for releases
 
 # Installation
+Clone the repo first.
+
 This uses [PDM](https://pdm-project.org/en/latest/) for its dependency management and virtual environments. If you don't want to install that, you
 can install the dependencies listed in the `pyproject.toml` file to get things running.
 
