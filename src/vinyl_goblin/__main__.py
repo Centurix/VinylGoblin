@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import click
 from typing import cast
 from click._termui_impl import ProgressBar
@@ -36,6 +37,19 @@ def main(discogs_token: str) -> None:
                         releases = shop.fetch_items_by_artist_and_album(artist, album)
                         for release in releases:
                             results_handle.write(f"{shop.shop_name}_records|{release.release}|{release.regular_price}|{release.sale_price}\n")
+
+    click.secho("De-duplicating...")
+    for entry in os.scandir("results"):
+        if entry.name.endswith(".csv"):
+            with open(entry.path, "r") as file_handle:
+                rows = file_handle.readlines()
+            destination_rows = []
+            for row in rows:
+                if row not in destination_rows:
+                    destination_rows.append(row)
+            destination_rows = sorted(destination_rows)
+            with open(entry.path, "w") as out_handle:
+                out_handle.writelines(destination_rows)
 
     click.secho("Complete", fg="green")
 
