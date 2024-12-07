@@ -1,0 +1,58 @@
+[project]
+name = "vinyl_goblin"
+version = "0.1.0"
+description = "Vinyl Goblin, Find items on your Discogs wantlist"
+authors = [
+    {name = "Chris Read", email = "centurix@gmail.com"},
+]
+dependencies = [
+    "click>=8.1.7",
+    "six>=1.16.0",
+    "requests>=2.32.3",
+    "oauthlib>=3.2.2",
+    "beautifulsoup4>=4.12.3",
+    "selenium>=4.27.1",
+    "python-dotenv>=1.0.1",
+    "types-requests>=2.32.0.20241016",
+    "types-beautifulsoup4>=4.12.0.20241020",
+    "python3-discogs-client>=2.7.1",
+]
+requires-python = ">=3.13"
+readme = "README.md"
+license = {text = "MIT"}
+keywords = ["vinyl", "records", "brisbane", "scraper", "store"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3"
+]
+
+[project.urls]
+homepage = "https://github.com/Centurix/vinyl_goblin"
+repository = "https://github.com/Centurix/vinyl_goblin"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.scripts]
+lint = {cmd = "ruff check .", help = "Linting using Ruff"}
+test = {cmd = "pytest .", help = "Unit testing using pytest"}
+typecheck = {cmd = "mypy .", help = "Type checking using mypy"}
+all = {composite = ["lint", "typecheck", "test"]}
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13.0",
+    "ruff>=0.8.2",
+    "pytest>=8.3.4",
+]
