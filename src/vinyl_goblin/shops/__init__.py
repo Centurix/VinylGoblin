@@ -12,6 +12,7 @@ from .blackened_records import BlackenedRecords
 from .jet_black_cat_records import JetBlackCatRecords
 from .waxx_lyrical import WaxxLyricalRecords
 from .spin_and_groove_records import SpinAndGrooveRecords
+from .hideous_records import HideousRecords
 
 
 shops = [
@@ -29,6 +30,7 @@ shops = [
     JetBlackCatRecords,
     WaxxLyricalRecords,
     SpinAndGrooveRecords,
+    HideousRecords,
 ]
 
 __all__ = [

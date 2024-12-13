@@ -9,6 +9,7 @@ VS Code or whatever.
 * Catalog Music
 * Dutch Vinyl (Both Brisbane and Melbourne stores)
 * Glitter Records
+* Hideous Records (*)
 * Jet Black Cat Records
 * Monster Robot (EDM, lots of 12" EPs)
 * Record Exchange (Online only)
@@ -20,13 +21,15 @@ VS Code or whatever.
 * Stash Records
 * Waxx Lyrical
 
-Retro World Collective is not here because they don't have an online store
+Retro World Collective, Bone Yard Collective and Record Wonderland are not here because they don't have online stores
 
 Butter Beats only lists less than 30 records on their online store at any time
 
 JB Hi Fi is not here because it's honestly too hard for very little reward on over priced records
 
 echo & bounce are not here because there is no non-graphql direct search for releases
+
+(*) Hideous records do not list the artist name on the search results, so their name is artificially injected making the search results a bit fuzzy
 
 # Installation
 Clone the repo first.
