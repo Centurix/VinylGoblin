@@ -1,5 +1,5 @@
-name: Create Windows executable
-run-name: Building Windows executable 🚀
+name: Create Linux executable
+run-name: Building Linux executable 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
