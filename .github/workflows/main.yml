@@ -7,13 +7,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install Python
-        uses: actions/setup-python@v5
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@v4
         with:
           python-version: '3.13'
-      - run: curl -sSL https://pdm-project.org/install-pdm.py | python3 -
       - run: pdm config python.use_venv false
-      - run: pdm install --dev
+      - run: pdm install
       - run: pdm export > src/requirements.txt
       - run: pyinstaller src/VinylGoblin
       # - name: Create Executable
