@@ -16,6 +16,7 @@ jobs:
       - run: pdm export > requirements.txt
       - run: pip install pyinstaller
       - run: ls -la /home/runner/.local/share/pdm/venv/lib/python3.13/site-packages
+      - run: find / -iname site-packages
       - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin --paths /home/runner/.local/share/pdm/venv/lib/python3.13/site-packages
       - uses: actions/upload-artifact@v4
         with:
