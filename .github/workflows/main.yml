@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.13'
       - run: pdm config python.use_venv false
-      - run: pdm install
+      - run: pdm install --dev
       - run: pdm export > src/requirements.txt
       - run: pyinstaller src/VinylGoblin
       # - name: Create Executable
