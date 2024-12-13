@@ -12,6 +12,7 @@ jobs:
         with:
           python-version: '3.13'
       - run: curl -sSL https://pdm-project.org/install-pdm.py | python3 -
+      - run: pdm config python.use_venv false
       - run: pdm install
       - run: pdm export > src/requirements.txt
       - run: ls -la src
