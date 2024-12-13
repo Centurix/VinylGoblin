@@ -55,4 +55,5 @@ dev = [
     "mypy>=1.13.0",
     "ruff>=0.8.2",
     "pytest>=8.3.4",
+    "pyinstaller>=4.5.1",
 ]
