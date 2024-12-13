@@ -3,7 +3,7 @@ run-name: Building executable 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Install Python
         run: apt install python3
