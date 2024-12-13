@@ -13,7 +13,7 @@ jobs:
           python-version: '3.13'
       - run: curl -sSL https://pdm-project.org/install-pdm.py | python3 -
       - run: pdm install
-      - run: pdm export > src/requirements.txt
+      - run: pdm export
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
         with:
