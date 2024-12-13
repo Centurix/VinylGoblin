@@ -15,6 +15,7 @@ jobs:
       - run: pdm install
       - run: pdm export > requirements.txt
       - run: pip install pyinstaller
+      - run: pwd
       - run: pyinstaller src/VinylGoblin
       # - name: Create Executable
       #   uses: sayyid5416/pyinstaller@v1
