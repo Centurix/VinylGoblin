@@ -3,8 +3,10 @@ run-name: Building executable 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: python:3.13-alpine
+    runs-on: ubuntu:latest
     steps:
+      - name: Install Python
+        run: apt install python3
       - name: Checkout code
         uses: actions/checkout@v4
       - run: curl -sSL https://pdm-project.org/install-pdm.py | python3 -
