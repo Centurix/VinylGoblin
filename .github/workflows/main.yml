@@ -17,7 +17,7 @@ jobs:
       - run: pip install pyinstaller
       - run: ls -la src
       - run: pwd
-      - run: pyinstaller src/vinyl_goblin
+      - run: pyinstaller src/vinyl_goblin/__main__.py
       # - name: Create Executable
       #   uses: sayyid5416/pyinstaller@v1
       #   with:
