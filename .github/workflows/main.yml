@@ -14,12 +14,12 @@ jobs:
       - run: pdm config python.use_venv false
       - run: pdm install
       - run: pdm export > src/requirements.txt
-      - run: pyinstaller src/VinylGoblin
-      # - name: Create Executable
-      #   uses: sayyid5416/pyinstaller@v1
-      #   with:
-      #     python_ver: '3.13'
-      #     spec: 'src/build.spec'
-      #     requirements: 'src/requirements.txt'
-      #     upload_exe_with_name: 'vinylgoblin'
-      #     options: --onefile, --name "Vinyl Goblin", --windowed, 
+      # - run: pyinstaller src/VinylGoblin
+      - name: Create Executable
+        uses: sayyid5416/pyinstaller@v1
+        with:
+          python_ver: '3.13'
+          spec: 'src/build.spec'
+          requirements: 'src/requirements.txt'
+          upload_exe_with_name: 'vinylgoblin'
+          options: --onefile, --name "Vinyl Goblin", --windowed, 
