@@ -17,7 +17,7 @@ jobs:
       - run: pip install pyinstaller
       - run: ls -la src
       - run: pwd
-      - run: pyinstaller src/vinyl_goblin/__main__.py
+      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin
       - uses: actions/upload-artifact@v4
         with:
           path: dist/*
