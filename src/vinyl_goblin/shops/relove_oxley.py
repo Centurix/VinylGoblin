@@ -50,7 +50,7 @@ class ReloveOxley(Shop):
                     regular_price=regular_price,
                     sale_price=regular_price
                     ))
-        except (AttributeError, TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
+        except (ValueError, AttributeError, TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
             pass
 
         return found_releases

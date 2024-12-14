@@ -51,7 +51,7 @@ class BlackenedRecords(Shop):
                         regular_price=regular_price,
                         sale_price=regular_price
                         ))
-        except (TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
+        except (ValueError, TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
             pass
 
         return found_releases
