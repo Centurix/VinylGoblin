@@ -3,6 +3,7 @@ import os
 import click
 from typing import cast
 from click._termui_impl import ProgressBar
+import click.shell_completion
 from discogs_client import Client, WantlistItem  # type: ignore
 from vinyl_goblin.shops import shops
 from dotenv import load_dotenv
@@ -12,10 +13,14 @@ from pathlib import Path
 load_dotenv()
 
 
+SCRIPT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
+OUTPUT_DIRECTORY = "results"
+
+
 @click.command
 @click.argument("DISCOGS_TOKEN", envvar="DISCOGS_TOKEN", type=str)
 def main(discogs_token: str) -> None:
-    with open(Path("src", "vinyl_goblin", "banner.txt"), "r") as banner:
+    with open(Path(SCRIPT_DIRECTORY, "banner.txt"), "r") as banner:
         click.secho(banner.read(), fg="red", bold=True)
 
     click.secho("Fetching discogs wantlist...", fg="green", bold=True)
@@ -25,6 +30,9 @@ def main(discogs_token: str) -> None:
     )
     wantlist = client.identity().wantlist
     click.secho(f"Found {len(wantlist)} releases in the wantlist", fg="bright_green")
+
+    click.secho(f"Placing results in `{OUTPUT_DIRECTORY}`", fg="magenta", italic=True)
+    os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
 
     for Shop in shops:
         with Shop() as shop:
@@ -39,7 +47,7 @@ def main(discogs_token: str) -> None:
                             results_handle.write(f"{shop.shop_name}_records|{release.release}|{release.regular_price}|{release.sale_price}\n")
 
     click.secho("De-duplicating...")
-    for entry in os.scandir("results"):
+    for entry in os.scandir(OUTPUT_DIRECTORY):
         if entry.name.endswith(".csv"):
             with open(entry.path, "r") as file_handle:
                 rows = file_handle.readlines()

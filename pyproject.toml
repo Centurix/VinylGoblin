@@ -50,9 +50,15 @@ test = {cmd = "pytest .", help = "Unit testing using pytest"}
 typecheck = {cmd = "mypy .", help = "Type checking using mypy"}
 all = {composite = ["lint", "typecheck", "test"]}
 
+build_linux = {cmd = "pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin --paths __pypackages__/3.13/lib"}
+build_windows = {cmd = ""}
+build_macos = {cmd = ""}
+build_all = {composite = ["build_linux", "build_windows", "build_macos"]}
+
 [dependency-groups]
 dev = [
     "mypy>=1.13.0",
     "ruff>=0.8.2",
     "pytest>=8.3.4",
+    "pyinstaller>=4.5.1",
 ]
