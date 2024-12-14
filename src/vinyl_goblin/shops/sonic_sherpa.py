@@ -30,11 +30,11 @@ class SonicSherpa(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
+        found_releases: list[Record] = []
         try:
             self._driver.get(f"{self._base_url}/store/index.php?route=product/search&search={artist}%20{album}")
 
             releases = self._driver.find_elements(By.CLASS_NAME, "product-layout")
-            found_releases = []
 
             for release in releases:
                 release_title_container = release.find_element(By.CLASS_NAME, "caption")

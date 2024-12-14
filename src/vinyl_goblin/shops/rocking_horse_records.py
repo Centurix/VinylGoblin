@@ -22,11 +22,11 @@ class RockingHorseRecords(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
+        found_releases: list[Record] = []
         response = requests.get(f"{self._base_url}/search?q={artist}+{album}&filter.v.availability=1&filter.p.product_type=Vinyl+LPs")
         soup = BeautifulSoup(response.text, "html.parser")
         releases = soup.find_all(name="li", class_="grid__item")
         # Find the img tag and grab the alt
-        found_releases = []
         for release in releases:
             release_title = release.find(name="img").attrs.get("alt")
             regular_price = release.find(name="span", class_="price-item--regular")

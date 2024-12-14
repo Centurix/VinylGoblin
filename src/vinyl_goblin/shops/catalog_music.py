@@ -69,7 +69,7 @@ class CatalogMusic(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Find this data in the already scraped shop
-        found_releases = []
+        found_releases: list[Record] = []
 
         for release in self._releases:
             if artist.lower() in release.release and album.lower() in release.release:

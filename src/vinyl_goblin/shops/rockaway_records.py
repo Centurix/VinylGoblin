@@ -30,11 +30,11 @@ class RockawayRecords(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
+        found_releases: list[Record] = []
         try:
             self._driver.get(f"{self._base_url}/search-results-page?q={artist}%20{album}")
 
             releases = self._driver.find_elements(By.CLASS_NAME, "snize-product")
-            found_releases = []
 
             for release in releases:
                 # document.querySelector("#snize-product-7269948588068 > a > div > span > span.snize-title")

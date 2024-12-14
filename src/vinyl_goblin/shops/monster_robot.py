@@ -30,11 +30,11 @@ class MonsterRobot(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
+        found_releases: list[Record] = []
         try:
             self._driver.get(f"{self._base_url}/?product_cat=&s={artist}+{album}&post_type=product")
 
             releases = self._driver.find_elements(By.CLASS_NAME, "product-small")
-            found_releases = []
 
             for release in releases:
                 # document.querySelector("#snize-product-7269948588068 > a > div > span > span.snize-title")

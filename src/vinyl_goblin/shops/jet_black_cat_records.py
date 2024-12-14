@@ -30,11 +30,11 @@ class JetBlackCatRecords(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
+        found_releases: list[Record] = []
         try:
             self._driver.get(f"{self._base_url}/search?q={artist}+{album}")
 
             releases = self._driver.find_elements(By.CLASS_NAME, "list-view-item")
-            found_releases = []
 
             for release in releases:
                 sold_outs = release.find_elements(By.CLASS_NAME, "list-view-item__sold-out")

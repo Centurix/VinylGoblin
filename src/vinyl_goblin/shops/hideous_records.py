@@ -32,8 +32,8 @@ class HideousRecords(Shop):
         # Go fetch a page
         # Hideous records do not include the artist name in the releases, only the album name
         # so we artificially inject the artist name into the release
+        found_releases: list[Record] = []
         try:
-            found_releases: list[Record] = []
 
             self._driver.get(f"{self._base_url}/search?q={artist}+{album}&options%5Bprefix%5D=last")
 

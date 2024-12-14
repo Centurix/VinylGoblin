@@ -30,12 +30,12 @@ class ReloveOxley(Shop):
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
+        found_releases: list[Record] = []
         try:
             self._driver.get(f"{self._base_url}/search?q={artist}+{album}&options%5Bprefix%5D=last")
 
             soup = BeautifulSoup(self._driver.page_source, "html.parser")
             releases = soup.find_all(name="li", class_="grid__item")
-            found_releases = []
 
             for release in releases:
                 release_title_container = release.find(name="h3", class_="card__heading")
