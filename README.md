@@ -32,6 +32,26 @@ echo & bounce are not here because there is no non-graphql direct search for rel
 (*) Hideous records do not list the artist name on the search results, so their name is artificially injected making the search results a bit fuzzy
 
 # Installation
+
+First, you will need to create an app in your discogs account. You can find that [here](https://www.discogs.com/settings/developers)
+
+The application name needs to be `VinylGoblin` for this to work.
+
+Then you need to generate a new access token. You can use the token in each of the methods below.
+
+## From a release
+
+This is the easiest method if you're a Linux user. Currently, only a linux terminal application is available for releases. Planning for Windows and MacOS in the near future.
+
+Head to the [releases](https://github.com/Centurix/VinylGoblin/releases) section in this repository and grab the correct one for your operating system. Unzip the file and then open a terminal in
+the location you downloaded the file:
+
+`vinyl_goblin <DISCOGS TOKEN>`
+
+Or rename or copy the `env.example` to `.env` and put the access token in the file.
+
+## From this repo
+
 Clone the repo first.
 
 This uses [PDM](https://pdm-project.org/en/latest/) for its dependency management and virtual environments. If you don't want to install that, you
@@ -46,12 +66,6 @@ Everything will be installed.
 It states that it runs on Python 3.13, but there's nothing really stopping it running on earlier versions.
 
 # Running
-First, you will need to create an app in your discogs account. You can find that [here](https://www.discogs.com/settings/developers)
-
-The application name needs to be `VinylGoblin` for this to work.
-
-Then you need to generate a new access token.
-
 Rename or copy the `env.example` to `.env` and put the access token in the file.
 
 Then, to run the searching session:
