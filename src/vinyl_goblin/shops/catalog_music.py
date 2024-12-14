@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
 from bs4 import BeautifulSoup
 import time
+from urllib3.exceptions import ReadTimeoutError
 
 
 class CatalogMusic(Shop):
@@ -57,7 +58,7 @@ class CatalogMusic(Shop):
                     regular_price=regular_price,
                     sale_price=regular_price
                     ))
-        except (TimeoutError, InvalidOperation, WebDriverException):
+        except (TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
             pass
 
 

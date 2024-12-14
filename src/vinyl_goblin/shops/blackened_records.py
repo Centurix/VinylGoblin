@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.common.exceptions import WebDriverException
 from bs4 import BeautifulSoup
+from urllib3.exceptions import ReadTimeoutError
 
 
 class BlackenedRecords(Shop):
@@ -50,7 +51,7 @@ class BlackenedRecords(Shop):
                         regular_price=regular_price,
                         sale_price=regular_price
                         ))
-        except (TimeoutError, InvalidOperation, WebDriverException):
+        except (TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
             pass
 
         return found_releases

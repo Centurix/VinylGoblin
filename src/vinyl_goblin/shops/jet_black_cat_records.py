@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
+from urllib3.exceptions import ReadTimeoutError
 
 
 class JetBlackCatRecords(Shop):
@@ -48,7 +49,7 @@ class JetBlackCatRecords(Shop):
                         regular_price=regular_price,
                         sale_price=regular_price
                         ))
-        except (TimeoutError, InvalidOperation, WebDriverException):
+        except (TimeoutError, InvalidOperation, WebDriverException, ReadTimeoutError):
             pass
 
         return found_releases
