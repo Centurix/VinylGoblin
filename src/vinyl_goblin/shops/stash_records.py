@@ -7,7 +7,7 @@ from decimal import Decimal, InvalidOperation
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
+from selenium.common.exceptions import WebDriverException
 
 
 class StashRecords(Shop):
@@ -47,7 +47,7 @@ class StashRecords(Shop):
                     regular_price=regular_price,
                     sale_price=regular_price
                     ))
-        except (TimeoutError, InvalidOperation, StaleElementReferenceException, NoSuchElementException):
+        except (TimeoutError, InvalidOperation, WebDriverException):
             pass
 
         return found_releases

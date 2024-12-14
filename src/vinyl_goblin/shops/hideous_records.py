@@ -6,9 +6,8 @@ import re
 from decimal import Decimal, InvalidOperation
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 
 class HideousRecords(Shop):
@@ -33,13 +32,16 @@ class HideousRecords(Shop):
         # Hideous records do not include the artist name in the releases, only the album name
         # so we artificially inject the artist name into the release
         try:
+            found_releases: list[Record] = []
+
             self._driver.get(f"{self._base_url}/search?q={artist}+{album}&options%5Bprefix%5D=last")
 
             soup = BeautifulSoup(self._driver.page_source, "html.parser")
             release_container = soup.find(name="ul", class_="product-grid")
-            releases = release_container.find_all(name="li", class_="grid__item")
+            if not isinstance(release_container, Tag):
+                return found_releases
 
-            found_releases = []
+            releases = release_container.find_all(name="li", class_="grid__item")
 
             for release in releases:
                 sold_out = release.find(name="span", class_="badge")
@@ -47,8 +49,14 @@ class HideousRecords(Shop):
                     continue
 
                 release_container = release.find(name="h3", class_="card__heading")
+                if not isinstance(release_container, Tag):
+                    continue
 
-                release_title = release_container.find(name="a").text.replace("\n", "").strip()
+                release_title_container = release_container.find(name="a")
+                if not isinstance(release_title_container, Tag):
+                    continue
+
+                release_title = release_title_container.text.replace("\n", "").strip()
 
                 regular_price = release.find(name="span", class_="price-item--regular")
                 if regular_price:
