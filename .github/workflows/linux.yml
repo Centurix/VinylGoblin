@@ -13,7 +13,6 @@ jobs:
           python-version: '3.13'
       - run: pdm config python.use_venv false
       - run: pdm install
-      # - run: pdm export > requirements.txt
       - run: pip install pyinstaller
       - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:.
       - uses: actions/upload-artifact@v4
