@@ -3,7 +3,7 @@ run-name: Building MacOS executable 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: macos-latest-large
+    runs-on: macos-13
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
