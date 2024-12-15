@@ -20,7 +20,7 @@ OUTPUT_DIRECTORY = "results"
 @click.command
 @click.argument("DISCOGS_TOKEN", envvar="DISCOGS_TOKEN", type=str)
 def main(discogs_token: str) -> None:
-    with open(Path(SCRIPT_DIRECTORY, "banner.txt"), "r") as banner:
+    with open(Path(SCRIPT_DIRECTORY, "banner.txt"), "r", encoding="utf-8") as banner:
         click.secho(banner.read(), fg="red", bold=True)
 
     click.secho("Fetching discogs wantlist...", fg="green", bold=True)
