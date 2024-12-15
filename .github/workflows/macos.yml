@@ -14,7 +14,9 @@ jobs:
       - run: pdm config python.use_venv false
       - run: pdm install
       - run: pip install pyinstaller
-      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:.
+      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:. --target-arch x86_64
+      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin_arm64 --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:. --target-arch arm64
+      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin_universal --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:. --target-arch universal2
       - uses: actions/upload-artifact@v4
         with:
           path: dist/*
