@@ -1,0 +1,20 @@
+name: Create MacOS arm64 executable
+run-name: Building MacOS arm64 executable 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: '3.13'
+      - run: pdm config python.use_venv false
+      - run: pdm install
+      - run: pip install pyinstaller
+      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin_arm64 --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:. --target-arch arm64
+      - uses: actions/upload-artifact@v4
+        with:
+          path: dist/*
