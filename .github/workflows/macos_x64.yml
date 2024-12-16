@@ -1,9 +1,6 @@
 name: Create MacOS x64 executable
 run-name: Building MacOS x64 executable 🚀
-on:
-  push:
-    tags:
-      - '*'
+on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: macos-13
@@ -17,7 +14,12 @@ jobs:
       - run: pdm config python.use_venv false
       - run: pdm install
       - run: pip install pyinstaller
-      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:. --target-arch x86_64
+      - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin_x64 --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:. --target-arch x86_64
       - uses: actions/upload-artifact@v4
         with:
           path: dist/*
+      - name: Release Linux ELF
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: dist/vinyl_goblin_x64
