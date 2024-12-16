@@ -1,6 +1,9 @@
 name: Create MacOS x64 executable
 run-name: Building MacOS x64 executable 🚀
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 jobs:
   Explore-GitHub-Actions:
     runs-on: macos-13

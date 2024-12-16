@@ -1,6 +1,9 @@
 name: Create Linux executable
 run-name: Building Linux executable 🚀
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest

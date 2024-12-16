@@ -1,6 +1,9 @@
 name: Create Windows executable
 run-name: Building Windows executable 🚀
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 jobs:
   Explore-GitHub-Actions:
     runs-on: windows-latest

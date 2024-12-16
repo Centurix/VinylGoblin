@@ -1,6 +1,9 @@
 name: Create MacOS arm64 executable
 run-name: Building MacOS arm64 executable 🚀
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 jobs:
   Explore-GitHub-Actions:
     runs-on: macos-latest
