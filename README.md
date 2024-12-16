@@ -31,26 +31,41 @@ echo & bounce are not here because there is no non-graphql direct search for rel
 
 (*) Hideous records do not list the artist name on the search results, so their name is artificially injected making the search results a bit fuzzy
 
-# Installation
+# Running
 
-First, you will need to create an app in your discogs account. You can find that [here](https://www.discogs.com/settings/developers)
+There are several releases available for Linux, Windows and MacOS (both ARM64 and x64). You can get them from the [releases](https://github.com/Centurix/VinylGoblin/releases) page.
+
+Before running, you will need to create an app in your discogs account. You can find that [here](https://www.discogs.com/settings/developers)
 
 The application name needs to be `VinylGoblin` for this to work.
 
 Then you need to generate a new access token. You can use the token in each of the methods below.
 
-## From a release
+You'll need to run each in the terminal/command line. Here are examples for each operating system. Replace <DISCOGS TOKEN> with the token created from your discogs account. NOTE THAT THIS CAN TAKE A LONG TIME TO RUN, LIKE HOURS IF YOU HAVE HUNDREDS OF WANTED ITEMS:
 
-This is the easiest method if you're a Linux user. Currently, only a linux terminal application is available for releases. Planning for Windows and MacOS in the near future.
+## Linux
 
-Head to the [releases](https://github.com/Centurix/VinylGoblin/releases) section in this repository and grab the correct one for your operating system. Unzip the file and then open a terminal in
-the location you downloaded the file:
+`vinyl_goblin_linux_x64 <DISCOGS TOKEN>`
 
-`vinyl_goblin <DISCOGS TOKEN>`
+## Windows
 
-Or rename or copy the `env.example` to `.env` and put the access token in the file.
+`vinyl_goblin_windows.exe <DISCOGS TOKEN>`
 
-## From this repo
+## MacOS ARM64 (Like M1/M2 Macbooks)
+
+`vinyl_goblin_macos_arm64 <DISCOGS TOKEN>`
+
+## MacOS x64 (Older models)
+
+`vinyl_goblin_macos_x64 <DISCOGS TOKEN>`
+
+# Storing your token
+
+Create a text file called `.env` and put the following into it, again replacing the token:
+
+`DISCOGS_TOKEN=<DISCOGS TOKEN>`
+
+## Running From this repo
 
 Clone the repo first.
 
@@ -66,6 +81,7 @@ Everything will be installed.
 It states that it runs on Python 3.13, but there's nothing really stopping it running on earlier versions.
 
 # Running
+
 Rename or copy the `env.example` to `.env` and put the access token in the file.
 
 Then, to run the searching session:
