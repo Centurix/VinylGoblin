@@ -45,17 +45,37 @@ You'll need to run each in the terminal/command line. Here are examples for each
 
 ## Linux
 
+First, make the file executable:
+
+`chmod +x vinyl_goblin_linux_x64`
+
+Then to run:
+
 `vinyl_goblin_linux_x64 <DISCOGS TOKEN>`
 
 ## Windows
+
+This application is compiled using pyinstaller. Windows just loves to think that this is a virus. If you manage to get it downloaded, you can run it like this:
 
 `vinyl_goblin_windows.exe <DISCOGS TOKEN>`
 
 ## MacOS ARM64 (Like M1/M2 Macbooks)
 
+First, make the file executable:
+
+`chmod +x vinyl_goblin_linux_x64`
+
+Then to run:
+
 `vinyl_goblin_macos_arm64 <DISCOGS TOKEN>`
 
 ## MacOS x64 (Older models)
+
+First, make the file executable:
+
+`chmod +x vinyl_goblin_linux_x64`
+
+Then to run:
 
 `vinyl_goblin_macos_x64 <DISCOGS TOKEN>`
 
