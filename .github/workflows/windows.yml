@@ -15,10 +15,21 @@ jobs:
       - run: pdm install
       - run: pip install pyinstaller
       - run: pyinstaller src/vinyl_goblin/__main__.py --onefile --name vinyl_goblin_windows --paths __pypackages__/3.13/lib --add-data src/vinyl_goblin/banner.txt:.
+      # - name: Sign executable
+      #   uses: skymatic/code-sign-action@v1
+      #   with:
+      #     certificate:
+      #     password: '${{ secrets.PASSWORD }}'
+      #     certificatesha1: '${{ secrets.CERTHASH }}'
+      #     certificatename: '${{ secrets.CERTNAME }}'
+      #     description: 'My App'
+      #     timestampUrl: 'http://timestamp.digicert.com'
+      #     folder: 'files'
+      #     recursive: true
       - uses: actions/upload-artifact@v4
         with:
           path: dist/*
-      - name: Release Linux ELF
+      - name: Release Windows Executable
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
