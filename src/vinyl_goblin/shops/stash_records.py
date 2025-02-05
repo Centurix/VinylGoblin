@@ -7,7 +7,7 @@ from decimal import Decimal, InvalidOperation
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import WebDriverException, InvalidSessionIdException
 from urllib3.exceptions import ReadTimeoutError
 
 
@@ -26,7 +26,10 @@ class StashRecords(Shop):
         return self
 
     def __exit__(self, *args):
-        self._driver.close()
+        try:
+            self._driver.close()
+        except InvalidSessionIdException:
+            pass
 
     def fetch_items_by_artist_and_album(self, artist: str, album: str) -> list[Record]:
         # Go fetch a page
