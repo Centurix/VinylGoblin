@@ -28,6 +28,7 @@ class CatalogMusic(Shop):
         options.add_argument("--headless")
         self._driver = webdriver.Firefox(options=options)
         self._driver.implicitly_wait(30)
+        self._releases = []
         # Gather the infinite scroll here
         try:
             self._driver.get(f"{self._base_url}/s/shop?page=1&limit=1500&sort_by=name&sort_order=asc")
@@ -42,7 +43,6 @@ class CatalogMusic(Shop):
                 if rc == int(regular_count):
                     break
 
-            self._releases = []
 
             soup = BeautifulSoup(self._driver.page_source, "html.parser")
             releases = soup.find_all(name="div", class_="mosaic-product-group")
