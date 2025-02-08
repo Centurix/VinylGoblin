@@ -89,12 +89,12 @@ Create a text file called `.env` and put the following into it, again replacing 
 
 Clone the repo first.
 
-This uses [PDM](https://pdm-project.org/en/latest/) for its dependency management and virtual environments. If you don't want to install that, you
+This uses [uv](https://github.com/astral-sh/uv) for its dependency management and virtual environments. If you don't want to install that, you
 can install the dependencies listed in the `pyproject.toml` file to get things running.
 
-To install using PDM though, change to the project directory and run:
+To install using `uv` though, change to the project directory and run:
 
-`pdm install`
+`uv sync`
 
 Everything will be installed.
 
@@ -124,9 +124,9 @@ In the `src/vinyl_goblin/shops/__init__.py` file there is a `shops` list. Commen
 # Adding shops
 It's fairly straight forward. Copy an existing shop file in the `src/vinyl_goblin/shops` directory and rename it to the one you want to scrape from. You'll need to figure out how the shop searches for records with the URL, most have some path like `/search?artist+blah+blah`. You'll see where that goes in the code. Then once you have a search result page you'll need to figure out how to identify each release on the page, usually <li> elements with stuff in them. Then find the title and price. Good luck. You can ask questions and submit bugs in the repo.
 
-If you're submitting changes, it'll need to have correct types and also linting passed over it. If you installed using PDM, you can do:
+If you're submitting changes, it'll need to have correct types and also linting passed over it. If you installed using `uv`, you can do:
 
-`pdm run all`
+`uv run ./all`
 
 And it'll run all the checks you need. Make a fork, create a branch, push it and create a PR and hopefully it'll get accepted.
 

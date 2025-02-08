@@ -5,7 +5,7 @@ from typing import cast
 from click._termui_impl import ProgressBar
 import click.shell_completion
 from discogs_client import Client, WantlistItem  # type: ignore
-from discogs_client.exceptions import HTTPError
+from discogs_client.exceptions import HTTPError  # type: ignore
 from vinyl_goblin.shops import shops
 from dotenv import load_dotenv
 from pathlib import Path
